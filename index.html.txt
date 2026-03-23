@@ -1,37 +1,541 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ultimate Pro Taxes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ultimate Pro Taxes offers bookkeeping, payroll, and tax services for individuals and businesses." />
   <style>
-    body { font-family: Arial; margin: 0; }
-    header { background: #0a2540; color: white; padding: 20px; text-align: center; }
-    section { padding: 40px; }
-    .btn { background: #2563eb; color: white; padding: 10px 20px; text-decoration: none; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo h1 {
+      font-size: 1.6rem;
+      margin-bottom: 2px;
+    }
+
+    .logo p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: white;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #0f172a;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 90px 0;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+      color: #dbeafe;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #475569;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      color: #0f172a;
+    }
+
+    .card ul {
+      margin-top: 12px;
+      padding-left: 18px;
+      color: #475569;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+    }
+
+    .about-wrap,
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .highlight-box {
+      background: #e0ecff;
+      border-left: 5px solid #2563eb;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .price-card {
+      text-align: center;
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .price-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      color: #2563eb;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .faq-item {
+      background: white;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .faq-item h4 {
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    form {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form button {
+      border: none;
+      cursor: pointer;
+    }
+
+    .contact-info .info-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 26px 0;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .about-wrap,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Ultimate Pro Taxes</h1>
-  <p>Bookkeeping • Payroll • Tax Services</p>
-</header>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <h1>Ultimate Pro Taxes</h1>
+        <p>Bookkeeping • Payroll • Tax Services</p>
+      </div>
 
-<section>
-  <h2>Services</h2>
-  <p>We provide bookkeeping, payroll, and tax services for individuals and businesses.</p>
-</section>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<section>
-  <h2>About</h2>
-  <p>We help clients stay organized, compliant, and financially confident.</p>
-</section>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h2>Professional Bookkeeping, Payroll, and Tax Services You Can Trust</h2>
+      <p>
+        Ultimate Pro Taxes helps individuals, self-employed professionals, and businesses stay organized,
+        compliant, and financially confident.
+      </p>
+      <a href="#contact" class="btn">Book a Consultation</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </section>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: info@ultimateprotaxes.com</p>
-  <p>Phone: (555) 123-4567</p>
-</section>
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>
+          We provide professional financial support for individuals and businesses with clear communication,
+          reliable service, and attention to detail.
+        </p>
+      </div>
+
+      <div class="grid services-grid">
+        <div class="card">
+          <h3>Bookkeeping</h3>
+          <p>Keep your financial records accurate, organized, and ready for better decision-making.</p>
+          <ul>
+            <li>Monthly reconciliations</li>
+            <li>Financial reporting</li>
+            <li>Cleanup bookkeeping</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Payroll</h3>
+          <p>Reliable payroll support to help your business stay accurate and compliant.</p>
+          <ul>
+            <li>Payroll processing</li>
+            <li>Payroll tax support</li>
+            <li>Employee setup</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Individual Tax Returns</h3>
+          <p>Professional tax preparation for employees, self-employed clients, and families.</p>
+          <ul>
+            <li>W-2 and 1099 filing</li>
+            <li>Self-employed returns</li>
+            <li>Tax planning support</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Business Tax Returns</h3>
+          <p>Tax preparation and filing support for small businesses and corporations.</p>
+          <ul>
+            <li>LLC, S Corp, C Corp</li>
+            <li>Year-end filings</li>
+            <li>Compliance support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" style="background:#ffffff;">
+    <div class="container about-wrap">
+      <div>
+        <div class="section-title" style="text-align:left; margin-bottom:20px;">
+          <h2>About Ultimate Pro Taxes</h2>
+          <p style="margin:0;">
+            We provide professional bookkeeping, payroll, and tax services focused on accuracy,
+            compliance, and personalized support.
+          </p>
+        </div>
+
+        <p>
+          Our goal is to help clients simplify financial processes, stay compliant with tax requirements,
+          and feel more confident about their financial records and reporting.
+        </p>
+
+        <div class="highlight-box">
+          <strong>Why clients choose us:</strong>
+          <p>
+            Personalized attention, organized processes, clear communication, and dependable service.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Who We Help</h3>
+        <ul>
+          <li>Individuals and families</li>
+          <li>Self-employed professionals</li>
+          <li>Small business owners</li>
+          <li>LLCs and corporations</li>
+          <li>Growing businesses</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-title">
+        <h2>Simple Starting Prices</h2>
+        <p>Final pricing may vary depending on complexity, transaction volume, and service needs.</p>
+      </div>
+
+      <div class="grid pricing-grid">
+        <div class="price-card">
+          <h3>Individual Tax Returns</h3>
+          <div class="price">Starting at $150</div>
+          <p>Ideal for W-2, 1099, and standard personal tax filings.</p>
+        </div>
+
+        <div class="price-card">
+          <h3>Bookkeeping</h3>
+          <div class="price">Starting at $300/mo</div>
+          <p>Monthly support for small businesses needing organized books and reports.</p>
+        </div>
+
+        <div class="price-card">
+          <h3>Payroll</h3>
+          <div class="price">Starting at $100/mo</div>
+          <p>Payroll support to help employers pay accurately and stay compliant.</p>
+        </div>
+
+        <div class="price-card">
+          <h3>Business Tax Returns</h3>
+          <div class="price">Starting at $500</div>
+          <p>Business return preparation for LLCs, S Corps, and corporations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you work with both individuals and businesses?</h4>
+        <p>Yes. We provide services for individuals, self-employed professionals, and businesses.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you offer bookkeeping cleanup?</h4>
+        <p>Yes. We can help organize prior records and bring your books up to date.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you offer remote services?</h4>
+        <p>Yes. We can work remotely and communicate digitally for convenience.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Can you help with prior-year tax returns?</h4>
+        <p>Yes. Prior-year returns can be prepared depending on available records and complexity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container contact-wrap">
+      <div class="contact-info">
+        <div class="section-title" style="text-align:left; margin-bottom:20px;">
+          <h2>Contact Ultimate Pro Taxes</h2>
+          <p style="margin:0;">
+            Ready to get started? Reach out for bookkeeping, payroll, individual tax returns, or business tax services.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <strong>Phone</strong>
+          <p>(555) 123-4567</p>
+        </div>
+
+        <div class="info-box">
+          <strong>Email</strong>
+          <p>info@ultimateprotaxes.com</p>
+        </div>
+
+        <div class="info-box">
+          <strong>Business Hours</strong>
+          <p>Monday - Friday | 9:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+
+      <form onsubmit="showMessage(event)">
+        <label>Name</label>
+        <input type="text" placeholder="Your full name" required>
+
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com" required>
+
+        <label>Phone</label>
+        <input type="text" placeholder="(555) 123-4567">
+
+        <label>Service Needed</label>
+        <select required>
+          <option value="">Select a service</option>
+          <option>Bookkeeping</option>
+          <option>Payroll</option>
+          <option>Individual Tax Return</option>
+          <option>Business Tax Return</option>
+          <option>Consultation</option>
+        </select>
+
+        <label>Message</label>
+        <textarea rows="5" placeholder="Tell us how we can help"></textarea>
+
+        <button class="btn" type="submit">Send Request</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ultimate Pro Taxes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function showMessage(event) {
+      event.preventDefault();
+      alert("Thank you! Your request has been received. Connect this form to email or a form service before publishing.");
+    }
+  </script>
 
 </body>
 </html>
