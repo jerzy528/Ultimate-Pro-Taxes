@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ultimate Pro Taxes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial; margin: 0; }
+    header { background: #0a2540; color: white; padding: 20px; text-align: center; }
+    section { padding: 40px; }
+    .btn { background: #2563eb; color: white; padding: 10px 20px; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Ultimate Pro Taxes</h1>
+  <p>Bookkeeping • Payroll • Tax Services</p>
+</header>
+
+<section>
+  <h2>Services</h2>
+  <p>We provide bookkeeping, payroll, and tax services for individuals and businesses.</p>
+</section>
+
+<section>
+  <h2>About</h2>
+  <p>We help clients stay organized, compliant, and financially confident.</p>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: info@ultimateprotaxes.com</p>
+  <p>Phone: (555) 123-4567</p>
+</section>
+
+</body>
+</html>
